@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REDACADEMIA · Aprende Redes y Networking</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/simulator.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌐%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-content">
+        <div class="logo" onclick="showPage('home')">
+            <span class="logo-icon">🌐</span>
+            <span>REDACADEMIA</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <button class="nav-link active" data-page="home" onclick="showPage('home')">🏠 Inicio</button>
+            <button class="nav-link" data-page="modules" onclick="showPage('modules')">📚 Módulos</button>
+            <button class="nav-link" data-page="simulator" onclick="showPage('simulator')">🔌 Simulador</button>
+            <button class="nav-link" data-page="subnetting" onclick="showPage('subnetting')">🧮 Subnetting</button>
+            <button class="nav-link" data-page="lab" onclick="showPage('lab')">🧪 Laboratorio</button>
+            <button class="nav-link" data-page="progress" onclick="showPage('progress')">🏆 Progreso</button>
+        </div>
+        <div class="user-stats">
+            <div class="user-stats-item">
+                <span>⭐</span>
+                <span id="navXP">0</span>
+            </div>
+            <div class="user-stats-item">
+                <span>🎖️</span>
+                <span id="navLevel">Amante</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="main-container">
+
+    <!-- ============================================
+         PÁGINA HOME
+         ============================================ -->
+    <div id="page-home" class="page-content">
+        <section class="hero">
+            <div class="hero-decoration">
+                <span class="hero-emoji">🌊</span>
+                <span class="hero-emoji">🧊</span>
+                <span class="hero-emoji">🍋</span>
+                <span class="hero-emoji">🌐</span>
+            </div>
+            <h1 class="hero-title">Aprende Redes<br>como en un videojuego</h1>
+            <p class="hero-subtitle">
+                Una plataforma fresca y didáctica para dominar networking, subnetting, VLANs, cableado, routing y mucho más. Con simuladores reales, ejercicios visuales y recompensas absurdas. 🍹
+            </p>
+            <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+                <button class="btn btn-large" onclick="showPage('modules')">🚀 Empezar a aprender</button>
+                <button class="btn btn-large btn-secondary" onclick="showPage('simulator')">🔌 Probar simulador</button>
+            </div>
+        </section>
+
+        <div class="global-progress">
+            <div class="global-progress-header">
+                <div class="global-progress-title">📊 Tu progreso general</div>
+                <div class="global-progress-percent" id="globalProgressPercent">0%</div>
+            </div>
+            <div class="progress-bar-large">
+                <div class="progress-bar-large-fill" id="globalProgressBar" style="width:0%"></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">¿Qué encontrarás aquí?</h2>
+        <p class="section-subtitle">Una experiencia educativa moderna, gamificada y muy práctica.</p>
+
+        <div class="info-grid" style="margin-bottom: 80px;">
+            <div class="info-card">
+                <div class="info-card-icon">📖</div>
+                <div class="info-card-title">Teoría clara</div>
+                <div class="info-card-desc">Apuntes estructurados, mejorados y enriquecidos con explicaciones modernas.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🎮</div>
+                <div class="info-card-title">Ejercicios interactivos</div>
+                <div class="info-card-desc">Tests, drag&drop, flashcards, ejercicios visuales y retos de subnetting.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔧</div>
+                <div class="info-card-title">Simulador real</div>
+                <div class="info-card-desc">Crea topologías, arrastra dispositivos, configura IPs y haz ping entre equipos.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🏆</div>
+                <div class="info-card-title">Gamificación</div>
+                <div class="info-card-desc">Puntos, niveles, logros y recompensas absurdamente divertidas. 🎁</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🧪</div>
+                <div class="info-card-title">Laboratorio</div>
+                <div class="info-card-desc">Tendencias modernas: WiFi 7, SDN, Zero Trust, Cloud Networking, IPv6...</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">💾</div>
+                <div class="info-card-title">Guardado automático</div>
+                <div class="info-card-desc">Tu progreso, topologías y configuraciones se guardan localmente.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Empieza por aquí</h2>
+        <p class="section-subtitle">Los módulos más recomendados para arrancar tu aventura.</p>
+        <div class="modules-grid" id="featuredModules"></div>
+    </div>
+
+    <!-- ============================================
+         PÁGINA MÓDULOS
+         ============================================ -->
+    <div id="page-modules" class="page-content" style="display:none;">
+        <h2 class="section-title">📚 Todos los módulos</h2>
+        <p class="section-subtitle">Recorre los bloques temáticos a tu ritmo. Cada módulo combina teoría + ejercicios + curiosidades.</p>
+        <div class="modules-grid" id="allModules"></div>
+    </div>
+
+    <!-- ============================================
+         PÁGINA MÓDULO INDIVIDUAL
+         ============================================ -->
+    <div id="page-module-detail" class="page-content" style="display:none;">
+        <button class="back-button" onclick="showPage('modules')">← Volver a módulos</button>
+        <div id="moduleDetailContent"></div>
+    </div>
+
+    <!-- ============================================
+         PÁGINA SIMULADOR
+         ============================================ -->
+    <div id="page-simulator" class="page-content" style="display:none;">
+        <h2 class="section-title">🔌 Simulador de Red</h2>
+        <p class="section-subtitle">Arrastra dispositivos, conéctalos con cables, configura sus IPs y prueba conectividad. ¡Como un mini Cisco Packet Tracer!</p>
+
+        <div class="info-box" style="margin-bottom:24px;">
+            <strong>💡 Cómo usar el simulador:</strong>
+            <ol style="margin-top:8px; padding-left:24px; line-height:1.9;">
+                <li>Arrastra dispositivos desde el panel izquierdo al canvas.</li>
+                <li>Activa el modo <strong>Conectar</strong> y haz clic en dos dispositivos para unirlos con un cable.</li>
+                <li>Haz clic en un dispositivo para configurar su IP, máscara, gateway, DNS...</li>
+                <li>Pulsa <strong>Enviar Ping</strong> entre dos PCs para comprobar conectividad.</li>
+            </ol>
+        </div>
+
+        <div class="simulator-layout">
+            <!-- Panel izquierdo: dispositivos -->
+            <div class="sim-toolbox" id="simToolbox"></div>
+
+            <!-- Canvas central -->
+            <div class="sim-canvas-wrapper">
+                <div class="sim-toolbar">
+                    <div class="sim-toolbar-group">
+                        <button class="sim-toolbar-btn active" id="modeSelect" onclick="setSimMode('select')">👆 Seleccionar</button>
+                        <button class="sim-toolbar-btn" id="modeConnect" onclick="setSimMode('connect')">🔗 Conectar</button>
+                        <button class="sim-toolbar-btn danger" id="modeDelete" onclick="setSimMode('delete')">🗑️ Borrar</button>
+                    </div>
+                    <div class="sim-toolbar-group">
+                        <button class="sim-toolbar-btn" onclick="sendPing()">📡 Ping</button>
+                        <button class="sim-toolbar-btn" onclick="saveTopology()">💾 Guardar</button>
+                        <button class="sim-toolbar-btn danger" onclick="clearCanvas()">🧹 Limpiar</button>
+                    </div>
+                </div>
+                <div class="sim-canvas" id="simCanvas">
+                    <svg class="sim-connections-svg" id="simConnections"></svg>
+                </div>
+            </div>
+
+            <!-- Panel derecho: configuración -->
+            <div class="sim-config-panel" id="simConfigPanel">
+                <div class="sim-config-empty">
+                    <div class="sim-config-empty-icon">🖱️</div>
+                    <p>Selecciona un dispositivo para configurarlo</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title" style="margin-top:64px; font-size:1.7em;">📋 Escenarios guiados</h3>
+        <p class="section-subtitle">Carga una plantilla y resuelve el reto.</p>
+        <div class="scenarios-grid" id="scenariosGrid"></div>
+    </div>
+
+    <!-- ============================================
+         PÁGINA SUBNETTING
+         ============================================ -->
+    <div id="page-subnetting" class="page-content" style="display:none;">
+        <h2 class="section-title">🧮 Laboratorio de Subnetting</h2>
+        <p class="section-subtitle">Calculadora interactiva, generador de ejercicios y representación visual de subredes.</p>
+        <div id="subnettingContent"></div>
+    </div>
+
+    <!-- ============================================
+         PÁGINA LABORATORIO (EXTRAS)
+         ============================================ -->
+    <div id="page-lab" class="page-content" style="display:none;">
+        <h2 class="section-title">🧪 Laboratorio Experimental</h2>
+        <p class="section-subtitle">Tendencias modernas de networking en 2025/2026. Lo que nadie suele contarte.</p>
+        <div id="labContent"></div>
+    </div>
+
+    <!-- ============================================
+         PÁGINA PROGRESO
+         ============================================ -->
+    <div id="page-progress" class="page-content" style="display:none;">
+        <h2 class="section-title">🏆 Tu progreso</h2>
+        <p class="section-subtitle">Sube de nivel, gana medallas y desbloquea recompensas absurdas.</p>
+        <div id="progressContent"></div>
+    </div>
+
+</div>
+
+<!-- Notificaciones -->
+<div class="notification" id="notification">
+    <div class="notification-icon" id="notifIcon">⭐</div>
+    <div>
+        <div class="notification-title" id="notifTitle"></div>
+        <div class="notification-desc" id="notifDesc"></div>
+    </div>
+</div>
+
+<!-- Confetti -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<!-- Scripts -->
+<script src="js/data.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/content.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/subnetting.js"></script>
+<script src="js/simulator.js"></script>
+<script src="js/lab.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
